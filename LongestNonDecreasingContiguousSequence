@@ -1,0 +1,27 @@
+/**
+ * Given a sequence of N numbers – A[1] , A[2] , …, A[N] . Find the length of the longest non-decreasing contiguous sequence.
+ * @author kayethi
+ *
+ */
+public class LongestNonDecreasingContiguousSequence {
+	
+	public static void main(String[] args){
+		LongestNonDecreasingContiguousSequence s = new LongestNonDecreasingContiguousSequence();
+		int[] values = {5,3,4,8,6,7};
+		System.out.println(s.findlength(values));
+	}
+
+	private int findlength(int[] values) {
+		int N= values.length;int max=0;
+		int[] length = new int[N];
+		for (int i = 0; i < N; i++) {
+			if(i-1<0 || values[i-1]>=values[i]){
+				length[i]=1;
+			}else{
+				length[i]=length[i-1]+1;
+			}
+			if(max<length[i]) max=length[i];
+		}//for i 0->N
+		return max;
+	}
+}
