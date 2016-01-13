@@ -24,7 +24,7 @@ public class sumCoin {
 		Arrays.fill(min, Integer.MAX_VALUE-1);
 		min[0]=0;
 		for (int i = 1; i <= sum; i++) {
-			//System.out.println(i +" : "+min[i]);
+			//System.out.println(i +" : "+min[i]); 
 			for (int k = 0;k<N; k++) {
 				//System.out.print("i : "+i+" k : "+k+" Minvalue : "+ min[i]+ " | ");
 				if(values[k] <=i &&min[i-values[k]]+1 < min[i] /*&& min[i-values[k]]>=0*/ ){
