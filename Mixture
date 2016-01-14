@@ -1,0 +1,80 @@
+/**
+ * Problem Statement
+    	You are trying to create a very precise mixture of a number of different chemicals. The exact amounts of the chemicals are given as a int[], desiredMixture, where desiredMixture[i] indicates how much of chemical i is required. You will be given a String[], availableMixtures, each element of which represents a mixture of chemicals that may be purchased (the chemical components for the mixture might not be available in pure form). Each element of availableMixtures will be formatted as a single-space separated list of integers, where the ith integer in availableMixtures[j] indicates how much chemical i is present in mixture j. Additionally, there will be one extra, final integer in each element of availableMixtures indicating the price of that mixture. You need not purchase the available mixtures in integral amounts. Hence if an element of availableMixtures were "3 5 9", you could purchase a mixture with 3 units of chemical 0 and 5 units of chemical 1 for a price of 9, and you could also purchase a mixture with 1.5 units of chemical 0 and 2.5 units of chemical 1 for a price of 4.5.
+
+
+
+Your task is to determine the lowest price that the desired mixture can be achieved for. If it is impossible to achieve the desired mixture, return -1.
+ 
+Definition
+    	
+Class:	Mixture
+Method:	mix
+Parameters:	int[], String[]
+Returns:	double
+Method signature:	double mix(int[] mixture, String[] availableMixtures)
+(be sure your method is public)
+    
+ 
+Constraints
+-	mixture will contain between 1 and 10 elements, inclusive.
+-	Each element of mixture will be between 1 and 10, inclusive.
+-	availableMixtures will contain between 1 and 10 elements, inclusive.
+-	Each element of availableMixtures will be formatted as N+1 single-space separated integers, where N is the number of elements in mixtures.
+-	Each integer in availableMixtures will be between 0 and 10, inclusive, with no extra leading zeros.
+ 
+Examples
+0)	
+    	
+{1,2,3}
+{"1 0 0 1","0 1 0 2","0 0 1 3"}
+Returns: 14.0
+Here, there are three chemicals, and each one is available in only its pure form. Given the prices of the three chemicals and the desired quantities, the total cost is 1*1+2*2+3*3=14.
+1)	
+    	
+{1,2,3}
+{"1 0 0 1","0 1 0 2","0 0 1 3","2 2 2 4"}
+Returns: 10.0
+Here, it is cheaper if we buy some of the mixture of all three chemicals.
+2)	
+    	
+{1,1,1,1,1,1,1,1,1,1}
+{"10 9 9 9 9 9 9 9 9 10 0",
+ "0 10 9 9 9 9 9 9 9 0 0",
+ "0 0 10 9 9 9 9 9 9 0 0",
+ "0 0 0 10 9 9 9 9 9 0 0",
+ "0 0 0 0 10 9 9 9 9 0 0",
+ "0 0 0 0 0 10 9 9 9 0 0",
+ "0 0 0 0 0 0 10 9 9 0 0",
+ "0 0 0 0 0 0 0 10 9 0 0",
+ "0 0 0 0 0 0 0 0 10 1 0",
+ "0 0 0 0 0 0 0 0 0 10 1"}
+Returns: -1.0
+This mixture is impossible. It can almost be achieved, but the closest you can get is to have the right amount of the first 9 chemicals, but just a little bit too much of the last one.
+3)	
+    	
+{7,7,8,10}
+{"9 0 4 8 4",
+ "8 8 9 0 1",
+ "0 10 3 10 7",
+ "10 2 2 0 1",
+ "8 9 10 2 6",
+ "1 2 5 8 8",
+ "4 7 8 9 6",
+ "2 10 6 8 10",
+ "6 3 9 7 1",
+ "3 6 9 9 1"}
+Returns: 3.5855425945563804
+The following table shows which mixtures to purchase to achieve the desired mixture as cheaply as possible:
+ i | amount
+---+--------
+ 0 | 202  / 943
+ 2 | 239  / 943
+ 3 | 595  / 1886
+ 9 | 1808 / 2829
+ * @author kayethi
+ *
+ */
+public class Mixture {
+
+}
