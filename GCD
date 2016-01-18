@@ -1,0 +1,35 @@
+/**
+ * Given 2 non negative integers m and n, find gcd(m, n)
+
+GCD of 2 integers m and n is defined as the greatest integer g such that g is a divisor of both m and n.
+Both m and n fit in a 32 bit signed integer.
+
+Example
+
+m : 6
+n : 9
+
+GCD(m, n) : 3 
+ * @author kayethi
+ *
+ */
+public class GCD {
+	public int gcd(int a, int b) {
+		int tem;
+		if(b>a){
+			tem =b;
+			b=a;
+			a=tem;
+		}
+		while(b!=0){
+			tem =b;
+			b=a%b;
+			a=tem;
+		}
+		return a;
+	}
+	public static void main(String[] args) {
+		GCD b = new GCD();
+		System.out.println(b.gcd(45,2));
+	}
+}
