@@ -1,0 +1,38 @@
+/*Given an integer n, return the number of trailing zeroes in n!.
+
+Note: Your solution should be in logarithmic time complexity.
+
+Example :
+
+n = 5
+n! = 120 
+Number of trailing zeros = 1
+So, return 1*/
+
+public class FACTORIAL {
+	public int trailingZeroes(int a) {
+		int count5=0,count2=1;
+		if(a<5) return 0;
+		for (int i = 4 ; i <= a; i++) {
+			int tem =i;
+			while(tem%2==0&& tem>1){
+				count2++;
+				tem=tem/2;
+			}
+			 tem =i;
+				while(tem%5==0&& tem>4){
+					count5++;
+					tem=tem/5;
+				}
+				
+			
+		}
+		return Math.min(count2, count5);
+		
+	}
+	public static void main(String[] args) {
+		FACTORIAL b = new FACTORIAL();
+		System.out.println(b.trailingZeroes(1200000000));
+	}
+
+}
