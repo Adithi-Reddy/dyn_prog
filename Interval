@@ -1,0 +1,92 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).
+
+You may assume that the intervals were initially sorted according to their start times.
+
+Example 1:
+
+Given intervals [1,3],[6,9] insert and merge [2,5] would result in [1,5],[6,9].
+
+Example 2:
+
+Given [1,2],[3,5],[6,7],[8,10],[12,16], insert and merge [4,9] would result in [1,2],[3,10],[12,16].
+
+This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].
+
+Make sure the returned intervals are also sorted.
+ * Definition for an interval.
+ * public class Interval {
+ *     int start;
+ *     int end;
+ *     Interval() { start = 0; end = 0; }
+ *     Interval(int s, int e) { start = s; end = e; }
+ * }
+ */
+
+public class Interval1 {
+	public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
+		ArrayList<Interval> a = new ArrayList<Interval>();
+		int start = newInterval.start;
+		int end = newInterval.end;
+		if(start>end){
+			int temp = end;
+			end = start;
+			newInterval.end=start;
+			start = temp;
+			newInterval.start = temp;
+		}
+		
+		boolean includedNew = false;
+		Iterator<Interval> i = intervals.iterator();
+		while (i.hasNext()) {
+			Interval interval = (Interval) i.next();
+			//System.out.println("["+interval.start+" , "+interval.end+"]");
+			//if(!includesNew){
+			if((end<interval.end && start>interval.start)) return intervals;
+				if((end<interval.start)||(start>interval.end)){
+					if(end<interval.start && !includedNew){ a.add(newInterval);includedNew=true;}
+					a.add(interval);
+				}else if((end>interval.end && start<interval.start)){
+					continue;
+				}else if((start<interval.end && start>=interval.start)){
+					newInterval.start=interval.start;
+				}else if((end<=interval.end && end>interval.start)){
+					newInterval.end = interval.end;
+				}
+			/*}else{
+				rt
+			}*/
+			
+		}
+		if(!includedNew){ a.add(newInterval);}
+		return a;
+
+    }
+	public static void main(String[] args) {
+		Interval1 b = new Interval1();
+		final Interval i = new Interval(1,2);//(1,3);
+		final Interval i1 = new Interval(3,6);//(6,9);
+		/*final Interval i2 = new Interval(6,7);
+		final Interval i3 = new Interval(8,10);
+		final Interval i4 = new Interval(12,16);*/
+		//Interval i5 = new Interval(,);
+		ArrayList<Interval> intervals = new ArrayList<Interval>(){{add(i);add(i1);/*add(i2);add(i3);add(i4);*/}};
+		Interval newInterval = new Interval(10,8);
+		System.out.println(b.insert(intervals, newInterval ).toString());
+	}
+
+}
+class Interval {
+	     int start;
+	      int end;
+	      Interval() { start = 0; end = 0; }
+	      Interval(int s, int e) { start = s; end = e; }
+	      public String toString(){
+			return "["+start+" , "+end+"]";
+	    	  
+	      }
+	  }
+
