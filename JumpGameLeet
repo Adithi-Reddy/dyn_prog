@@ -1,0 +1,20 @@
+public class Solution {
+    public boolean canJump(int[] nums) {
+        int N = nums.length-1;
+		if(N==0) return true;
+		int[] maxReach =new int[N+1];int Max=nums[0],i=1;
+		if(Max>=N)
+		    return true;
+		while(i <=N && i<=Max) {
+			 if(Max<(i+nums[i])) {
+			    Max=(i+nums[i]);
+				if(Max>=N)
+					return true;
+			 }
+			i++;		
+			
+		}
+		return false;
+        
+    }
+}
