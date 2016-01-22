@@ -1,0 +1,23 @@
+public class Solution {
+   public int jump(int[] nums) {
+	    	int N = nums.length-1;
+	    	if(N==1) return 0;
+	    	if(nums[0]>=N) return 1;
+	    	int[] minJmps = new int[N+1];
+	    	minJmps[0]=0;
+	    	int min;
+	    	for (int i = 1, j=0 ,maxReach = nums[0]; i <= N; i++) {
+	    		min=N+1; j=0;
+				while (j<i && min!=1 ) {
+				    maxReach=j+nums[j];
+					if(maxReach>=i && min>minJmps[j]+1){
+							min = minJmps[j]+1;
+						}
+						j++;
+				}
+				minJmps[i]=min;
+			}
+	    	return minJmps[N];
+        
+    }
+}
